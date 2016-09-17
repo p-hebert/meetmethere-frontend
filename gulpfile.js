@@ -7,6 +7,7 @@ var rename = require('gulp-rename');
 var sourcemaps = require('gulp-sourcemaps');
 var uglify = require('gulp-uglify');
 var ngAnnotate = require('gulp-ng-annotate');
+var connect = require('gulp-connect');
 var yaml = require('gulp-yaml');
 
 var paths = {
@@ -38,6 +39,14 @@ gulp.task('default', ['clean', 'build:dev']);
 gulp.task('clean', function(done) {
   del.sync('./build/*.js');
   done();
+});
+
+gulp.task('connect', function() {
+  connect.server({
+    root: ['./'],
+    port: 9090,
+    fallback: './app/index.html'
+  });
 });
 
 gulp.task('build:dev', ['sass', /*'enums',*/ 'types', 'controllers', 'services', /*'directives'*/], function(done) {
