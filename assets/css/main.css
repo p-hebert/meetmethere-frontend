@@ -87,3 +87,6 @@ body {
 
 #meeting, #meeting--amenities {
   height: 26px !important; }
+
+.schedule--meeting--map {
+  width: 255px; }
