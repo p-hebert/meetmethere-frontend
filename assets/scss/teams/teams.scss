@@ -29,9 +29,19 @@
 .team {
 	&--button {
 		height: 30px;
-	}
+	},
 
 	&--member {
 		margin-bottom: 14px;
+	}
+}
+
+.create {
+	&--positive {
+		background-color: $light-persian-green !important;
+	},
+
+	&--description {
+		padding-left: 37.4px !important;
 	}
 }

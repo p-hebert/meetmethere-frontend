@@ -56,5 +56,11 @@ body {
 .team--button {
   height: 30px; }
 
-.team--member {
+.team, .team--member {
   margin-bottom: 14px; }
+
+.create--positive {
+  background-color: #00B5AD !important; }
+
+.create, .create--description {
+  padding-left: 37.4px !important; }
