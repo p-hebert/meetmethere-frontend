@@ -1,0 +1,39 @@
+<div class="container" ng-controller="CreateTeamController">
+    <form class="ui form">
+    	<div class="ui stacked segment">
+	    	<div class="field">
+			    <label>Name</label>
+			    <input type="text" name="name" placeholder="Name">
+			</div>
+			<div class="field">
+			    <label>Description</label>
+			    <textarea rows="2" placeholder="Description"></textarea>
+			</div>
+
+			<h4 class="ui dividing header">Members</h4>
+			<!-- TODO: ng-repeat for each team member? -->
+			<div class="three fields">
+			    <div class="field">
+			      <label>Username</label>
+			      	<!-- TODO: typeahead -->
+			      <input type="text" placeholder="Username">
+			    </div>
+			    <div class="field">
+			      <label>Role</label>
+			      <input type="text" placeholder="Role">
+			    </div>
+			    <div class="field" ng-show="true">
+			    	<label>Action</label>
+			    	<!-- TODO: remove user from team -->
+			    	<div class="red ui button">-</div>
+			    </div>
+			</div>
+		 	<div class="field">
+		    	<!-- TODO: add action to show new set of empty fields -->
+		    	<div class="green ui button">+</div>
+		    </div>
+		  
+		  <button class="ui button" type="submit">Create team</button>
+	  </div>
+	</form>
+</div>
