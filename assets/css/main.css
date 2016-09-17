@@ -15,3 +15,24 @@
 
 body {
   background-color: #DBDADA; }
+
+.side-bar--logo {
+  background-color: #00989B;
+  height: 150px; }
+  .side-bar--logo--img {
+    width: 205px;
+    margin-top: 10px; }
+
+.side-bar--username {
+  padding-top: 10px;
+  padding-left: 10px;
+  margin-bottom: 30px; }
+
+.ui.visible.sidebar {
+  background-color: #E7E7E7 !important; }
+
+.item img {
+  float: left;
+  width: 30px !important;
+  margin-right: 5px !important;
+  margin-top: -10px !important; }
