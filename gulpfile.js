@@ -128,8 +128,7 @@ gulp.task('sass', function(done) {
     .pipe(sass({
       errLogToConsole: true
     }))
-    //.pipe(rename({ extname: '.css' }))
-    .pipe(concat('main.css'))
+    .pipe(rename({ extname: '.css' }))
     .pipe(gulp.dest('./assets/css/'))
     .on('end', done);
 });
