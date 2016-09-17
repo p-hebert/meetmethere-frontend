@@ -39,3 +39,6 @@ jspm_packages
 #bower
 bower_components
 app/lib
+
+#Compiled JS
+build
