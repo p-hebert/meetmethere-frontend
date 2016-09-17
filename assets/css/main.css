@@ -2,3 +2,16 @@
   padding-top: 140px !important; }
   .login .column {
     max-width: 500px; }
+
+.register {
+  padding-top: 100px !important; }
+  .register .column {
+    max-width: 500px; }
+  .register--header {
+    background-color: #00B5AD !important;
+    color: white !important; }
+  .register--img {
+    max-width: 90px; }
+
+body {
+  background-color: #DBDADA; }
