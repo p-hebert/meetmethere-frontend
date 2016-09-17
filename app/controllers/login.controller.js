@@ -2,18 +2,24 @@
   angular.module('app.controllers')
     .controller('LoginController', LoginController);
 
-    LoginController.$inject = ['DataGatewayService'];
+    LoginController.$inject = ['DataGatewayService', 'AuthService', '$location','$window'];
 
-    function LoginController(DataGatewayService){
+    function LoginController(DataGatewayService, AuthService, $location, $window){
       var vm = this;
-      var route = "";
-      vm.email='';
       vm.username='';
       vm.pwd='';
-      vm.cpwd='';
       vm.submit = submit;
 
+      activate();
+
     /////////////////////
+
+      function activate(){
+        if(AuthService.isLoggedIn()){
+          $location.path('/');
+          $window.location.reload();
+        }
+      }
 
       function submit(){
         if(!vm.email){
@@ -26,16 +32,16 @@
           error();
         }else{
           var payload = {
-            email: vm.email,
-            pwd: vm.pwd,
+            Username: vm.username,
+            Password: vm.pwd,
           };
-          return DataGatewayService.post(route, payload);
+          return AuthService.login(payload);
         }
 
       }
 
       function error(field){
-
+        console.error("Invalid submission");
       }
 
     }

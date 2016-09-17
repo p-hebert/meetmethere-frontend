@@ -32,7 +32,7 @@
         console.log(payload);
         var req = {
           method: method,
-          url: "api/" + route,
+          url: "/api/" + route,
           headers: {
             "Content-Type": "application/json"
           }
@@ -40,10 +40,10 @@
         if(payload){
           req.data = payload;
         }
-        return $http().then(
+        return $http(req).then(
           function(response) {
             console.log(response);
-            return Promise.resolve(response.data);
+            return Promise.resolve(response);
           },
           function(error) {
             console.error(error);
