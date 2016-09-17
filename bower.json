@@ -1,7 +1,7 @@
 {
   "name": "MeetMeThere",
   "description": "",
-  "main": "./app/index.html",
+  "main": "./app/views/index.html",
   "authors": [],
   "license": "MIT",
   "moduleType": [],

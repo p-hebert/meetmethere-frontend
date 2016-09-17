@@ -50,7 +50,7 @@ gulp.task('connect', function() {
   connect.server({
     root: ['./'],
     port: 9090,
-    fallback: './app/index.html'
+    fallback: './app/views/index.html'
   });
 });
 
