@@ -2,11 +2,10 @@
   angular.module('app.controllers')
     .controller('SignupController', SignupController);
 
-    SignupController.$inject = ['DataGatewayService'];
+    SignupController.$inject = ['DataGatewayService', 'AuthService'];
 
-    function SignupController(DataGatewayService){
+    function SignupController(DataGatewayService, AuthService){
       var vm = this;
-      var route = "";
       vm.email='';
       vm.username='';
       vm.pwd='';
@@ -27,17 +26,16 @@
           error();
         }else{
           var payload = {
-            email: vm.email,
-            username: vm.username,
-            pwd: vm.pwd,
+            Email: vm.email,
+            Username: vm.username,
+            Password: vm.pwd,
           };
-          return DataGatewayService.post(route, payload);
+          AuthService.signup(payload);
         }
-
       }
 
       function error(field){
-
+        console.error("Invalid submission");
       }
 
     }
