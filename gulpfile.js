@@ -16,22 +16,26 @@ var paths = {
   sassMain: ['./assets/scss/main.scss'],
   controllers: [
     './app/controllers/_index.js',
+    './app/controllers/**/*.js',
   ],
   services: [
     './app/services/_index.js',
+    './app/services/**/*.js',
   ],
   directives: [
 
   ],
   types: [
-    './app/types/user/*.js'
+    './app/types/user/user.proto.js',
+    './app/types/user/anonuser.proto.js'
   ],
   i18n: ['assets/i18n/**/*.yaml'],
   app: [
     './build/types.js',
     './build/services.js',
     './build/directives.js',
-    './build/controllers.js'
+    './build/controllers.js',
+    './app/app.js'
   ]
 };
 
@@ -53,7 +57,7 @@ gulp.task('connect', function() {
 gulp.task('build:dev', ['sass', /*'enums',*/ 'types', 'controllers', 'services', /*'directives'*/], function(done) {
   gulp.src(paths.app)
     .pipe(sourcemaps.init())
-    .pipe(concat('exekutive.app.js'))
+    .pipe(concat('mmt.app.js'))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('./build'))
     .on('end', done);
@@ -62,7 +66,7 @@ gulp.task('build:dev', ['sass', /*'enums',*/ 'types', 'controllers', 'services',
 gulp.task('build:prod', ['sassmin', /*'enums',*/ 'types', 'controllers', 'services', /*'directives'*/], function(done) {
   gulp.src(paths.app)
     .pipe(sourcemaps.init())
-    .pipe(concat('exekutive.app.js'))
+    .pipe(concat('mmt.app.js'))
     .pipe(uglify())
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('./build'))

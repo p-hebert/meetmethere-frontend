@@ -42,3 +42,6 @@ app/lib
 
 #Compiled JS
 build
+
+#Compiled SASS
+assets/css
