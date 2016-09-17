@@ -13,13 +13,23 @@ var paths = {
   sass: ['./assets/scss/**/*.scss'],
   sassMain: ['./assets/scss/main.scss'],
   controllers: [
+    './app/controllers/_index.js',
   ],
   services: [
+    './app/services/_index.js',
   ],
   directives: [
+
+  ],
+  types: [
+    './app/types/user/*.js'
   ],
   i18n: ['assets/i18n/**/*.yaml'],
   app: [
+    './build/types.js',
+    './build/services.js',
+    './build/directives.js',
+    './build/controllers.js'
   ]
 };
 
@@ -30,7 +40,7 @@ gulp.task('clean', function(done) {
   done();
 });
 
-gulp.task('build:dev', ['sass', 'js-adt', 'i18n', /*'enums',*/ 'types', 'controllers', 'services', 'directives'], function(done) {
+gulp.task('build:dev', ['sass', /*'enums',*/ 'types', 'controllers', 'services', /*'directives'*/], function(done) {
   gulp.src(paths.app)
     .pipe(sourcemaps.init())
     .pipe(concat('exekutive.app.js'))
@@ -39,7 +49,7 @@ gulp.task('build:dev', ['sass', 'js-adt', 'i18n', /*'enums',*/ 'types', 'control
     .on('end', done);
 });
 
-gulp.task('build:prod', ['sassmin', 'js-adt', 'i18n', /*'enums',*/ 'types', 'controllers', 'services', 'directives'], function(done) {
+gulp.task('build:prod', ['sassmin', /*'enums',*/ 'types', 'controllers', 'services', /*'directives'*/], function(done) {
   gulp.src(paths.app)
     .pipe(sourcemaps.init())
     .pipe(concat('exekutive.app.js'))
