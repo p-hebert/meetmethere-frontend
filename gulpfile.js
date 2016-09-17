@@ -9,6 +9,7 @@ var uglify = require('gulp-uglify');
 var ngAnnotate = require('gulp-ng-annotate');
 var connect = require('gulp-connect');
 var yaml = require('gulp-yaml');
+var del = require('del');
 
 var paths = {
   sass: ['./assets/scss/**/*.scss'],
@@ -127,7 +128,8 @@ gulp.task('sass', function(done) {
     .pipe(sass({
       errLogToConsole: true
     }))
-    .pipe(rename({ extname: '.min.css' }))
+    //.pipe(rename({ extname: '.css' }))
+    .pipe(concat('main.css'))
     .pipe(gulp.dest('./assets/css/'))
     .on('end', done);
 });
