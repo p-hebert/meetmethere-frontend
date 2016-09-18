@@ -1,193 +1,390 @@
 <!DOCTYPE html>
-
 <html ng-app="app" lang="en-US">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <base href="/">
-        <title>Meet Me There | Get together with your team!</title>
-        <link rel="stylesheet" type="text/css" href="./app/lib/semantic/dist/semantic.min.css">
-        <link rel="stylesheet" type="text/css" href="./assets/css/main.css">
-        <!-- TODO CSS style sheet -->
-    </head>
-    <body>
-      	<div class="ui sidebar visible left vertical menu">
-	        <div class="side-bar--logo">
-	            <img class="side-bar--logo--img" src="./assets/img/logo-2.png">
-	        </div>
-	        <p class="side-bar--username">Username</p>
 
-	        <a class="item">
-	          <img src="./assets/img/people.png">Teams
-	        </a>
-	        <a class="item">
-	          <img src="./assets/img/calendar.png">My Meetings
-	        </a>
-	    </div>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base href="/">
+    <title>Meet Me There | Get together with your team!</title>
+    <link rel="stylesheet" type="text/css" href="./app/lib/semantic/dist/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/main.css">
+    <link rel="stylesheet" type="text/css" href="./app/datepicker/calendar.min.css">
+    <!-- TODO CSS style sheet -->
+</head>
 
-	    <div class="pusher">
-	      	<div class="ui vertical segment padded teams">
-	    		<div class="row">
-	    			<h1 class="teams--header">Meet Me There</h1>
-	    		</div>
-		      	<div class="row teams--title">
-			      	<p class="teams--header"> 
-			      		<img class="teams--img" src="./assets/img/people.png">
-			      		Teams
-			      		<button id="add-team-button" class="circular right floated ui icon button teams--button">
-			      			<i class="icon plus"></i>
-			      		</button>
-			      	</p>
-		      	</div>
-		    </div>
-		   	<!-- TODO: ng-repeat for all teams -->
-		    <div class="ui padded segment">
-		    	<div class="ui right aligned grid">
-			    	<div class="left floated left aligned eight wide column">
-						<h2>Name of team</h2>
-						<p>Description of team that is very long and exciting, huh? We are such a cool team, yehaw.</p>
-						<!-- TODO: put in correct icons -->
-						<button class="ui button">
-		      				<img class="team--button" src="./assets/img/calendar.png">
-		      			</button>
-		      			<button class="ui button">
-		      				<img class="team--button" src="./assets/img/calendar.png">
-		      			</button>
-		 			</div>
-		  			<div class="right floated right aligned eight wide column">
-	      				<!-- TODO: ng-repeat for all team members -->
-	      				<a class="ui large yellow image label team--member">
-						  	<img src="./assets/img/christian.jpg">
-						  	Christian
-						  	<div class="detail">Strategist</div>
-						</a><br><br>
-
-						<!-- TODO: remove. just for demo purposes -->
-						<a class="ui large teal image label team--member">
-						  	<img src="./assets/img/jenny.jpg">
-						  	Jenny
-						  	<div class="detail">Designer</div>
-						</a><br><br>
-						<a class="ui large grey image label team--member">
-						  	<img src="./assets/img/nan.jpg">
-						  	Amanda
-						  	<div class="detail">Design Thinker</div>
-						</a><br><br>
-					</div>
-				</div>
-		    </div>			
-
-			<!-- TODO: remove. just for demo purposes -->
-			<div class="ui padded segment">
-		    	<div class="ui right aligned grid">
-			    	<div class="left floated left aligned eight wide column">
-						<h2>Name of team</h2>
-						<p>Description of team that is very long and exciting, huh? We are such a cool team, yehaw.</p>
-						<!-- TODO: put in correct icons -->
-						<button class="ui button">
-		      				<img class="team--button" src="./assets/img/calendar.png">
-		      			</button>
-		      			<button class="ui button">
-		      				<img class="team--button" src="./assets/img/calendar.png">
-		      			</button>
-		 			</div>
-		  			<div class="right floated right aligned eight wide column">
-	      				<!-- TODO: ng-repeat for all team members -->
-	      				<a class="ui large yellow image label team--member">
-						  	<img src="./assets/img/christian.jpg">
-						  	Christian
-						  	<div class="detail">Strategist</div>
-						</a><br><br>
-						<a class="ui large teal image label team--member">
-						  	<img src="./assets/img/jenny.jpg">
-						  	Jenny
-						  	<div class="detail">Designer</div>
-						</a><br><br>
-						<a class="ui large grey image label team--member">
-						  	<img src="./assets/img/nan.jpg">
-						  	Amanda
-						  	<div class="detail">Design Thinker</div>
-						</a><br><br>
-					</div>
-				</div>
-		    </div>			
-		</div>
-
-    </body>
-    <script src="./app/lib/jquery/dist/jquery.min.js"></script>
-    <script src="./app/lib/semantic/dist/semantic.min.js"></script>
-    <script src="./app/lib/angular/angular.min.js"></script>
-    <script src="./build/mmt.app.js"></script>
-
-
-    <div class="ui modal">
-	  	<i class="close icon"></i>
-	  	<div class="header">
-	    	Create a team
-	  	</div>
-	    <form class="ui form">
-	    	<div class="ui stacked segment">
-	    		<div class="field">
-                    <div class="ui left icon input">
-                        <i class="users icon"></i>
-                        <input ng-model="sctrl.name" type="text" name="name" placeholder="Team name">
+<body>
+    <div class="ui sidebar visible left vertical menu">
+        <div class="side-bar--logo">
+            <img class="side-bar--logo--img" src="./assets/img/logo-2.png">
+        </div>
+        <p class="side-bar--username">Username</p>
+        <a class="item">
+            <img src="./assets/img/people.png">Teams
+        </a>
+        <a class="item">
+            <img src="./assets/img/calendar.png">My Meetings
+        </a>
+    </div>
+    <div class="pusher">
+        <div class="ui vertical segment padded meetings">
+            <div class="row">
+                <h1 class="meetings--header">Meet Me There</h1>
+            </div>
+            <div class="row meetings--title">
+                <p class="meetings--header">
+                    <img class="meetings--img" src="./assets/img/calendar.png"> My Meetings
+                    <button id="add-meeting-button" class="circular right floated ui icon button meetings--button">
+                        <i class="icon plus"></i>
+                    </button>
+                </p>
+            </div>
+        </div>
+        <!-- TODO: ng-repeat for all future (?) meetings -->
+        <div class="ui padded segment items">
+            <div class="item">
+                <div class="image">
+                    <!-- TODO: insert actual map -->
+                    <img id="meeting--map" src="./assets/img/map-placeholder.png">
+                </div>
+                <div class="content">
+                    <a class="header">Team Name - Meeting Location</a>
+                    <div class="meta">
+                        <span>Saturday, September 16 2016. 10:00 - 20:00</span>
+                    </div>
+                    <div class="extra">
+                        <i class="icon marker"></i> 1721 Ropery Street, Montreal, Québec
+                    </div>
+                    <div class="description">
+                        <p>Today is all about brainstorming. We will gather ideas on how to proceed in our projects, products, and internally.</p>
+                    </div>
+                    <div class="ui right aligned grid">
+                        <div class="left floated left aligned nine wide column">
+                            <div class="extra">
+                                <a class="ui small yellow image label">
+                                    <img id="meeting--participant--img" src="./assets/img/christian.jpg"> Christian
+                                    <div class="detail"><i class="icon help"></i></div>
+                                </a>
+                                <a class="ui teal image label">
+                                    <img id="meeting--participant--img" src="./assets/img/jenny.jpg"> Jenny
+                                    <div class="detail"><i class="icon checkmark"></i></div>
+                                </a>
+                                <a class="ui grey image label">
+                                    <img id="meeting--participant--img" src="./assets/img/nan.jpg"> Amanda
+                                    <div class="detail"><i class="icon remove"></i></div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="right floated right aligned seven wide column">
+                            <div class="extra">
+                                <i class="icon wifi large" id="meeting--amentities"></i>
+                                <i class="icon coffee large" id="meeting--amentities"></i>
+                                <i class="icon plug large" id="meeting--amentities"></i>
+                                <i class="icon food large" id="meeting--amentities"></i>
+                                <i class="icon beer large" id="meeting--amentities"></i>
+                                <i class="icon tree large" id="meeting--amentities"></i>
+                                <i class="icon alarm mute large" id="meeting--amentities"></i>
+                                <i class="icon money large" id="meeting--amentities"></i>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="field">
-                    <div class="ui left icon input">
-                        <i class="info icon"></i>
-                        <textarea class="create--description" rows="1" ng-model="sctrl.description" type="text" name="description" placeholder="Team description"></textarea>
+            </div>
+        </div>
+        <!-- TODO: delete. only for demo purposes -->
+        <div class="ui padded segment items">
+            <div class="item">
+                <div class="image">
+                    <!-- TODO: insert actual map -->
+                    <img id="meeting--map" src="./assets/img/map-placeholder.png">
+                </div>
+                <div class="content">
+                    <a class="header">Team Name - Meeting Location</a>
+                    <div class="meta">
+                        <span>Saturday, September 16 2016. 10:00 - 20:00</span>
+                    </div>
+                    <div class="extra">
+                        <i class="icon marker"></i> 1721 Ropery Street, Montreal, Québec
+                    </div>
+                    <div class="description">
+                        <p>Today is all about brainstorming. We will gather ideas on how to proceed in our projects, products, and internally.</p>
+                    </div>
+                    <div class="ui right aligned grid">
+                        <div class="left floated left aligned nine wide column">
+                            <div class="extra">
+                                <a class="ui small yellow image label">
+                                    <img id="meeting--participant--img" src="./assets/img/christian.jpg"> Christian
+                                    <div class="detail"><i class="icon help"></i></div>
+                                </a>
+                                <a class="ui teal image label">
+                                    <img id="meeting--participant--img" src="./assets/img/jenny.jpg"> Jenny
+                                    <div class="detail"><i class="icon checkmark"></i></div>
+                                </a>
+                                <a class="ui grey image label">
+                                    <img id="meeting--participant--img" src="./assets/img/nan.jpg"> Amanda
+                                    <div class="detail"><i class="icon remove"></i></div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="right floated right aligned seven wide column">
+                            <div class="extra">
+                                <i class="icon wifi large" id="meeting--amentities"></i>
+                                <i class="icon coffee large" id="meeting--amentities"></i>
+                                <i class="icon plug large" id="meeting--amentities"></i>
+                                <i class="icon food large" id="meeting--amentities"></i>
+                                <i class="icon beer large" id="meeting--amentities"></i>
+                                <i class="icon tree large" id="meeting--amentities"></i>
+                                <i class="icon alarm mute large" id="meeting--amentities"></i>
+                                <i class="icon money large" id="meeting--amentities"></i>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="ui modal 1">
+            <i class="close icon"></i>
+            <div class="header">
+                Schedule a meeting | Basic information
+            </div>
+            <form class="ui form">
+                <div class="ui content basic segment">
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <i class="users icon"></i>
+                            <input ng-model="sctrl.team" type="text" name="team" placeholder="Pick a team">
+                        </div>
+                    </div>
+                    <div class="ui calendar field" id="example2">
+                        <div class="ui input left icon">
+                            <i class="calendar icon"></i>
+                            <input type="text" placeholder="Date">
+                        </div>
+                    </div>
+                    <div class="ui calendar field" id="example3">
+                        <div class="ui input left icon">
+                            <i class="time icon"></i>
+                            <input type="text" placeholder="Time">
+                        </div>
+                    </div>
+                    <div class="ui left aligned grid">
+                        <div class="left floated left aligned eight wide column">
+                            <div class="inline field">
+                                <div class="ui checkbox">
+                                    <input type="checkbox" tabindex="0" class="hidden">
+                                    <label><i class="wifi icon"></i>WiFi</label>
+                                </div>
+                            </div>
+                            <div class="inline field">
+                                <div class="ui checkbox">
+                                    <input type="checkbox" tabindex="0" class="hidden">
+                                    <label><i class="plug icon"></i>Electricity</label>
+                                </div>
+                            </div>
+                            <div class="inline field">
+                                <div class="ui checkbox">
+                                    <input type="checkbox" tabindex="0" class="hidden">
+                                    <label><i class="alarm mute icon"></i>Quiet atmosphere</label>
+                                </div>
+                            </div>
+                            <div class="inline field">
+                                <div class="ui checkbox">
+                                    <input type="checkbox" tabindex="0" class="hidden">
+                                    <label><i class="tree icon"></i>Nature</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="left floated left aligned eight wide column">
+                            <div class="inline field">
+                                <div class="ui checkbox">
+                                    <input type="checkbox" tabindex="0" class="hidden">
+                                    <label><i class="coffee icon"></i>Coffee</label>
+                                </div>
+                            </div>
+                            <div class="inline field">
+                                <div class="ui checkbox">
+                                    <input type="checkbox" tabindex="0" class="hidden">
+                                    <label><i class="beer icon"></i>Beer</label>
+                                </div>
+                            </div>
+                            <div class="inline field">
+                                <div class="ui checkbox">
+                                    <input type="checkbox" tabindex="0" class="hidden">
+                                    <label><i class="food icon"></i>Food</label>
+                                </div>
+                            </div>
+                            <div class="inline field">
+                                <div class="ui checkbox">
+                                    <input type="checkbox" tabindex="0" class="hidden">
+                                    <label><i class="money icon"></i>Affordable</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="actions">
+                <div class="ui grey deny button">
+                    Cancel
+                </div>
+                <div class="ui create--positive right labeled icon button" id="next-button">
+                    Next
+                    <i class="arrow right icon"></i>
+                </div>
+            </div>
+        </div>
 
-				<h4 class="ui dividing header">Members</h4>
-				<!-- TODO: ng-repeat for each team member? -->
-				<div class="ui right aligned grid">
-			    	<div class="left floated left aligned eight wide column">
-				      	<!-- TODO: typeahead -->
-				      	<div class="field">
-		                    <div class="ui left icon input">
-		                        <i class="user icon"></i>
-		                        <input ng-model="sctrl.username" type="text" name="username" placeholder="Username">
-		                    </div>
-		                </div>
-				    </div>
-			    	<div class="left floated left aligned seven wide column">
-				      	<div class="field">
-		                    <div class="ui left icon input">
-		                        <i class="black tie icon"></i>
-		                        <input ng-model="sctrl.role" type="text" name="role" placeholder="Role">
-		                    </div>
-		                </div>
-				    </div>
-			    	<div class="left floated right aligned one wide column">
-				    	<!-- TODO: remove user from team -->
-				    	<button class="circular grey right floated ui icon button">
-			      			<i class="icon minus"></i>
-			      		</button>
-				    </div>
+
+        <div class="ui modal 2">
+            <i class="close icon"></i>
+            <div class="header">
+                Schedule a meeting | Select a venue
+            </div>
+            <div class="ui basic segment">
+            	<div class="ui right aligned grid">
+                    <div class="left floated left aligned six wide column">
+						<div class="inline fields">
+	                    	<!-- TODO: ng-repeat for each location found to fit? or best 3 fitting ones -->
+						    <div class="field">
+						      	<div class="ui radio checkbox">
+							        <input type="radio" name="frequency" checked="checked">
+							        <label><h4>A. Name of Location</h4></label>
+		                        	<i class="icon marker"></i> 1721 Ropery Street, Montreal, Québec
+		                        	</br>
+		                        	<i class="icon wifi med" id="meeting--amentities"></i>
+		                            <i class="icon coffee med" id="meeting--amentities"></i>
+		                            <i class="icon plug med" id="meeting--amentities"></i>    
+						      	</div>
+						    </div>
+						    </br>
+						    <div class="field">
+						      	<div class="ui radio checkbox">
+							        <input type="radio" name="frequency" checked="checked">
+							        <label><h4>B. Name of Location</h4></label>
+		                        	<i class="icon marker"></i> 1721 Ropery Street, Montreal, Québec
+		                        	</br>
+		                        	<i class="icon wifi med" id="meeting--amentities"></i>
+		                            <i class="icon coffee med" id="meeting--amentities"></i>
+		                            <i class="icon plug med" id="meeting--amentities"></i>    
+						      	</div>
+						    </div>
+						    </br>
+						    <div class="field">
+						      	<div class="ui radio checkbox">
+							        <input type="radio" name="frequency" checked="checked">
+							        <label><h4>C. Name of Location</h4></label>
+		                        	<i class="icon marker"></i> 1721 Ropery Street, Montreal, Québec
+		                        	</br>
+		                        	<i class="icon wifi med" id="meeting--amentities"></i>
+		                            <i class="icon coffee med" id="meeting--amentities"></i>
+		                            <i class="icon plug med" id="meeting--amentities"></i>    
+						      	</div>
+						    </div>
+							</br>
+						</div>
+					</div>
+					<div class="left floated left aligned ten wide column">
+						<form class="ui large form" ng-controller="MeetupController as mctrl">
+						<div id="map" class="schedule--meeting--map"></div>
+						</form>
+						<!-- <div class="image">
+					    	TODO: insert actual map
+					      	<img class="schedule--meeting--map" src="./assets/img/map-placeholder.png">
+						</div> -->
+					</div>
 				</div>
-			 	<div class="ui right aligned grid">
-				 	<div class="left floated left aligned column">
-				    	<!-- TODO: add action to show new set of empty fields -->
-				    	<button class="circular create--positive ui icon button">
-				      		<i class="icon plus"></i>
-				      	</button>
-				    </div>
-			    </div>
-		  	</div>
-		</form>
-	  	<div class="actions">
-	    	<div class="ui grey deny button">
-	      		Cancel
-	    	</div>
-	    	<div class="ui create--positive right labeled icon button">
-	      		Create
-	      	<i class="checkmark icon"></i>
-	    	</div>
-	  	</div>
-	</div>
-<script type="text/javascript">$("#add-team-button").click(function() {$('.ui.modal').modal('show');});</script>
+            </div>
+            <div class="actions">
+                <div class="ui grey deny button">
+                    Cancel
+                </div>
+                <div class="ui create--positive right labeled icon button">
+                    Schedule meeting
+                    <i class="checkmark icon"></i>
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div>
+</body>
+<script src="./app/lib/jquery/dist/jquery.min.js"></script>
+<script src="./app/lib/semantic/dist/semantic.min.js"></script>
+<script src="./app/lib/angular/angular.min.js"></script>
+<script src="./app/datepicker/calendar.min.js"></script>
+<script src="./build/mmt.app.js"></script>
+<script type="text/javascript">
+$("#add-meeting-button").click(function() {
+    $('.ui.modal.1').modal('show');
+});
+</script>
+<script type="text/javascript">
+$("#next-button").click(function() {
+    $('.ui.modal.2').modal('show');
+});
+</script>
+<script type="text/javascript">
+$('#example2').calendar({
+    type: 'date'
+});
+</script>
+<script type="text/javascript">
+$('#example3').calendar({
+    type: 'time'
+});
+</script>
+
+
+
+<script>
+  function initMap() {
+    var locations = [
+  ['Bondi Beach', -33.890542, 151.274856, 'cafe'],
+  ['Coogee Beach', -33.923036, 151.259052, 'food'],
+  ['Cronulla Beach', -34.028249, 151.157507, 'library'],
+  ['Manly Beach', -33.80010128657071, 151.28747820854187, 'bar'],
+  ['Maroubra Beach', -33.950198, 151.259302, 'cafe']
+];
+  // var locations = mctrl.locations
+    var totalLat = 0, totalLng = 0;
+    for (i = 0; i < locations.length; i++) {
+        totalLat += locations[i][1];
+        totalLng += locations[i][2]; 
+    }
+    var myLatLng = {lat: totalLat/locations.length, lng: totalLng/locations.length};
+
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 10,
+        center: myLatLng
+      });
+      var infowindow = new google.maps.InfoWindow();
+      var marker, i;
+      for (i = 0; i < locations.length; i++) {  
+        marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        map: map
+        });
+
+        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+            return function() {
+                infowindow.setContent('<h3>'+locations[i][0]+'</h3>'+
+                '<p><i>'+locations[i][3]+'</i></p>'+
+                '<button onclick="pickLocation(i)">Pick this location</button>');
+                infowindow.open(map, marker);
+            }
+        })(marker, i));
+      }
+  }
+  function pickLocation(i){
+    mctrl.finalLocation = locations[i]; 
+  }
+</script>
+
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAERDK8UyHIWS6okdvqbQmIASNvzNaKSE0&callback=initMap"
+    async defer></script>
 
 </html>

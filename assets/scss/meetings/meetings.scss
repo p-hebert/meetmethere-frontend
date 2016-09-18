@@ -39,6 +39,11 @@
 
 .schedule {
 	&--meeting--map {
-		width: 255px;
+		width: 100%;
 	}
+}
+
+#map {
+	height: 400px;
+	width: 400px;
 }
