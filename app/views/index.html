@@ -352,6 +352,7 @@
 		$('.ui.modal.2').modal({
 		    onVisible: function(){
 		    	google.maps.event.trigger(map, 'resize');
+		    	map.setCenter(myLatLng);
 		    }
 		});
   }
